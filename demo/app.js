@@ -8,7 +8,8 @@
 angular.module('demoApp', [
     'ngRoute',
     'ui.sortable',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'vs-repeat'
   ]).
   config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'views/kanban.html'});

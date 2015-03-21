@@ -59,7 +59,7 @@
          * @returns {String} Height
          */
         height: function (element) {
-          return element.prop('offsetHeight');
+          return element[0].getBoundingClientRect().height;
         },
 
         /**
@@ -69,7 +69,7 @@
          * @returns {String} Width
          */
         width: function (element) {
-          return element.prop('offsetWidth');
+          return element[0].getBoundingClientRect().width;
         },
 
         /**
@@ -337,9 +337,7 @@
      * @param itemData - the item model data.
      */
     $scope.insertItem = function (index, itemData) {
-      $scope.safeApply(function () {
-        $scope.modelValue.splice(index, 0, itemData);
-      });
+      $scope.modelValue.splice(index, 0, itemData);
     };
 
     /**
@@ -351,9 +349,7 @@
     $scope.removeItem = function (index) {
       var removedItem = null;
       if (index > -1) {
-        $scope.safeApply(function () {
-          removedItem = $scope.modelValue.splice(index, 1)[0];
-        });
+        removedItem = $scope.modelValue.splice(index, 1)[0];
       }
       return removedItem;
     };
@@ -377,22 +373,6 @@
      */
     $scope.accept = function (sourceItemHandleScope, destScope, destItemScope) {
       return $scope.callbacks.accept(sourceItemHandleScope, destScope, destItemScope);
-    };
-
-    /**
-     * Checks the current phase before executing the function.
-     *
-     * @param fn the function to execute.
-     */
-    $scope.safeApply = function (fn) {
-      var phase = this.$root.$$phase;
-      if (phase === '$apply' || phase === '$digest') {
-        if (fn && (typeof fn === 'function')) {
-          fn();
-        }
-      } else {
-        this.$apply(fn);
-      }
     };
 
   }]);
@@ -779,7 +759,7 @@
 
               //IE fixes: hide show element, call element from point twice to return pick correct element.
               dragElement.addClass(sortableConfig.hiddenClass);
-              $document[0].elementFromPoint(targetX, targetY);
+
               targetElement = angular.element($document[0].elementFromPoint(targetX, targetY));
               dragElement.removeClass(sortableConfig.hiddenClass);
 
@@ -1026,7 +1006,8 @@
      * @returns {*} - item model value.
      */
     $scope.itemData = function () {
-      return $scope.sortableScope.modelValue[$scope.$index];
+      var ind = $scope.$eval('startIndex + $index') || $scope.$index;
+      return $scope.sortableScope.modelValue[ind];
     };
 
   }]);
@@ -1046,7 +1027,8 @@
             element.addClass(sortableConfig.itemClass);
           }
           scope.sortableScope = sortableController.scope;
-          scope.modelValue = sortableController.scope.modelValue[scope.$index];
+          var ind = scope.$eval('startIndex + $index') || scope.$index;
+          scope.modelValue = sortableController.scope.modelValue[ind];
           scope.element = element;
         }
       };

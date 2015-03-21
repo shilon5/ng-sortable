@@ -143,6 +143,10 @@ div.task h3 {
     min-height: 50px;
 }
 
+[vs-repeat] {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 .noMargin { margin-bottom: 0;}
 
 .default {

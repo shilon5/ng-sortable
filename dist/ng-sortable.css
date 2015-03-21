@@ -20,6 +20,15 @@
     z-index: 9999;
 }
 
+.as-sortable-drag > * {
+    transform: none !important;
+    -webkit-transform: none !important;
+}
+
 .as-sortable-hidden {
     display: none !important;
+}
+
+.vs-repeat-fill-element{
+    pointer-events: none;
 }

@@ -11,7 +11,18 @@ angular.module('demoApp').service('BoardDataFactory', function () {
       "numberOfColumns": 4,
       "columns": [
         {"name": "Ideas", "cards": [
-          {"title": "Come up with a POC for new Project"},
+            {"title": "1 up with a POC for new Project"},
+            {"title": "2 up with a POC for new Project"},
+            {"title": "3 up with a POC for new Project"},
+            {"title": "4 up with a POC for new Project"},
+            {"title": "5 up with a POC for new Project"},
+            {"title": "6 up with a POC for new Project"},
+            {"title": "7 up with a POC for new Project"},
+            {"title": "8 up with a POC for new Project"},
+            {"title": "9 up with a POC for new Project"},
+            {"title": "10 up with a POC for new Project"},
+            {"title": "11 up with a POC for new Project"},
+            {"title": "12 up with a POC for new Project"},
           {"title": "Design new framework for reporting module"}
         ]},
         {"name": "Not started", "cards": [

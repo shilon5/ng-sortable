@@ -7,9 +7,9 @@ angular.module('demoApp').service('BoardService', ['$modal', 'BoardManipulator',
 
   return {
     removeCard: function (board, column, card) {
-      if (confirm('Are You sure to Delete?')) {
+      /*if (confirm('Are You sure to Delete?')) {*/
         BoardManipulator.removeCardFromColumn(board, column, card);
-      }
+      /*}*/
     },
 
     addNewCard: function (board, column) {

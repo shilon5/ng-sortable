@@ -34,7 +34,8 @@
      * @returns {*} - item model value.
      */
     $scope.itemData = function () {
-      return $scope.sortableScope.modelValue[$scope.$index];
+      var ind = $scope.$eval('startIndex + $index') || $scope.$index;
+      return $scope.sortableScope.modelValue[ind];
     };
 
   }]);
@@ -54,7 +55,8 @@
             element.addClass(sortableConfig.itemClass);
           }
           scope.sortableScope = sortableController.scope;
-          scope.modelValue = sortableController.scope.modelValue[scope.$index];
+          var ind = scope.$eval('startIndex + $index') || scope.$index;
+          scope.modelValue = sortableController.scope.modelValue[ind];
           scope.element = element;
         }
       };
