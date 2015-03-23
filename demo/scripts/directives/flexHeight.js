@@ -28,7 +28,7 @@ angular.module('demoApp').directive('flexHeight', ['$window', '$timeout', '$log'
                     var top = newVal,
                         h = $window.innerHeight - top;
 
-                    $log.debug($window.innerHeight + ' - ' + top, h);
+                    //$log.debug($window.innerHeight + ' - ' + top, h);
 
                     element.css('max-height', h + 'px');
                 })

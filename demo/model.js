@@ -36,5 +36,6 @@ function Card(title, status, details) {
   this.title = title;
   this.status = status;
   this.details = details;
+    this.image= "http://api.randomuser.me/portraits/med/men/" + Math.round((Math.random() * 8)) + ".jpg";
   return this;
 }
