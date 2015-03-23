@@ -179,8 +179,8 @@ div.task h3 {
 .card-image {
     overflow: hidden;
     border-radius: 50%;
-    height: 30px;
-    width: 30px;
+    height: auto;
+    width: 100%;
     position: absolute;
 }
 
