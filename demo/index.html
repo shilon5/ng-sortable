@@ -24,10 +24,10 @@
     <script type="text/javascript" src="scripts/controllers/SprintController.js"></script>
     <script type="text/javascript" src="scripts/controllers/NewCardController.js"></script>
     <script type="text/javascript" src="scripts/directives/flexHeight.js"></script>
+    <script type="text/javascript" src="scripts/directives/card.js"></script>
 
 </head>
 <body ng-app="demoApp">
-<!--
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="board-header">
@@ -36,8 +36,8 @@
                 <li><a href="#/sprint" ng-class="{active: isActive('#/sprint')}">Sprint</a></li>
             </ul>
         </div>
+        <div ng-view></div>
+    </div>
 </nav>
--->
-<div ng-view></div>
 </body>
 </html>

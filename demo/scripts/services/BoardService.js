@@ -6,13 +6,19 @@
 angular.module('demoApp').service('BoardService', ['$modal', 'BoardManipulator', function ($modal, BoardManipulator) {
 
   return {
-    removeCard: function (board, column, card) {
-      /*if (confirm('Are You sure to Delete?')) {*/
-        BoardManipulator.removeCardFromColumn(board, column, card);
-      /*}*/
-    },
+      removeCard: function (board, column, card) {
+          /*if (confirm('Are You sure to Delete?')) {*/
+          BoardManipulator.removeCardFromColumn(board, column, card);
+          /*}*/
+      },
 
-    addNewCard: function (board, column) {
+      removeTask: function (board, backlog, phase, card) {
+          /*if (confirm('Are You sure to Delete?')) {*/
+          BoardManipulator.removeCardFromBacklog(board, backlog.name, phase.name, card);
+          /*}*/
+      },
+
+      addNewCard: function (board, column) {
       var modalInstance = $modal.open({
         templateUrl: 'views/partials/newCard.html',
         controller: 'NewCardController',

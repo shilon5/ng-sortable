@@ -47,6 +47,20 @@ angular.module('demoApp').factory('BoardManipulator', function () {
           });
         }
       });
-    }
+    },
+
+      removeCardFromBacklog: function (board, backlogName, phaseName, task) {
+          angular.forEach(board.backlogs, function (backlog) {
+              if (backlog.name === backlogName) {
+                  angular.forEach(backlog.phases, function (phase) {
+                      if (phase.name === phaseName) {
+                          phase.cards.splice(phase.cards.indexOf(task), 1);
+                              /*.push(new Card(task.title, task.status, task.details));*/
+                      }
+                  });
+              }
+          });
+      }
+
   };
 });
