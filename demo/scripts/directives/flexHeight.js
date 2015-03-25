@@ -31,6 +31,8 @@ angular.module('demoApp').directive('flexHeight', ['$window', '$timeout', '$log'
                     //$log.debug($window.innerHeight + ' - ' + top, h);
 
                     element.css('max-height', h + 'px');
+                    element.css('overflow-x', 'hidden');
+                    element.css('overflow-y', 'auto');
                 })
 
             }
