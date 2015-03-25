@@ -18,24 +18,44 @@ angular.module('demoApp').service('BoardService', ['$modal', 'BoardManipulator',
           /*}*/
       },
 
+      addNewTask: function (sprintBoard, backlog) {
+          var modalInstance = $modal.open({
+              templateUrl: 'views/partials/newCard.html',
+              controller: 'NewCardController',
+              backdrop: 'static',
+              resolve: {
+                  column: function(){
+                      return { name: "Not started" };
+                  }
+              }
+          });
+          modalInstance.result.then(function (cardDetails) {
+              if (cardDetails) {
+                  cardDetails.status = cardDetails.column.name;
+                  BoardManipulator.addCardToBacklog(sprintBoard, backlog.name, cardDetails.status, cardDetails);
+              }
+          });
+      },
+
       addNewCard: function (board, column) {
-      var modalInstance = $modal.open({
-        templateUrl: 'views/partials/newCard.html',
-        controller: 'NewCardController',
-        backdrop: 'static',
-        resolve: {
-          column: function () {
-            return column;
-          }
-        }
-      });
-      modalInstance.result.then(function (cardDetails) {
-        if (cardDetails) {
-          BoardManipulator.addCardToColumn(board, cardDetails.column, cardDetails.title, cardDetails.details);
-        }
-      });
-    },
-    kanbanBoard: function (board) {
+          var modalInstance = $modal.open({
+              templateUrl: 'views/partials/newCard.html',
+              controller: 'NewCardController',
+              backdrop: 'static',
+              resolve: {
+                  column: function () {
+                      return column;
+                  }
+              }
+          });
+          modalInstance.result.then(function (cardDetails) {
+              if (cardDetails) {
+                  BoardManipulator.addCardToColumn(board, cardDetails.column, cardDetails.title, cardDetails.details);
+              }
+          });
+      },
+
+      kanbanBoard: function (board) {
       var kanbanBoard = new Board(board.name, board.numberOfColumns);
       angular.forEach(board.columns, function (column) {
         BoardManipulator.addColumn(kanbanBoard, column.name);

@@ -11,6 +11,10 @@ angular.module('demoApp').controller('SprintController', ['$scope', 'BoardServic
         BoardService.removeTask($scope.sprintBoard, backlog, phase, card);
     }
 
+    $scope.addNewCard = function(backlog){
+        BoardService.addNewTask($scope.sprintBoard, backlog);
+    };
+
 
     $scope.sprintSortOptions = {
 
